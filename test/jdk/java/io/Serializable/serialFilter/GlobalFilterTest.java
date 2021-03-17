@@ -78,6 +78,7 @@ public class GlobalFilterTest {
      */
     @DataProvider(name="globalPatternElements")
     Object[][] globalPatternElements() {
+        System.out.println("!!! 1");
         String globalFilter =
                 System.getProperty("expected-" + serialPropName,
                         Security.getProperty(serialPropName));
@@ -117,6 +118,10 @@ public class GlobalFilterTest {
      */
     @Test()
     static void globalFilter() {
+        System.out.println("!!! 2");
+
+
+
         ObjectInputFilter filter = ObjectInputFilter.Config.getSerialFilter();
 
         // Check that the System.setProperty(jdk.serialFilter) DOES NOT affect the filter.
@@ -143,6 +148,9 @@ public class GlobalFilterTest {
      */
     @Test()
     static void setGlobalFilter() {
+
+        System.out.println("!!! 3");
+
         SecurityManager sm = System.getSecurityManager();
         ObjectInputFilter filter = new SerialFilterTest.Validator();
         ObjectInputFilter global = ObjectInputFilter.Config.getSerialFilter();
@@ -207,6 +215,9 @@ public class GlobalFilterTest {
      */
     @Test(dataProvider = "globalPatternElements")
     static void globalFilterElements(String pattern, boolean allowed,Object obj) {
+
+        System.out.println("!!! 4");
+
         testGlobalPattern(pattern, obj, allowed);
     }
 
@@ -219,6 +230,10 @@ public class GlobalFilterTest {
      * @param allowed the expected result from ObjectInputStream (exception or not)
      */
     static void testGlobalPattern(String pattern, Object object, boolean allowed) {
+
+        System.out.println("!!! 5");
+
+
         try {
 //            System.out.printf("global %s pattern: %s, obj: %s%n", (allowed ? "allowed" : "not allowed"), pattern, object);
             byte[] bytes = SerialFilterTest.writeObjects(object);

@@ -325,6 +325,7 @@ public class VMProps implements Callable<Map<String, String>> {
      * support.
      */
     protected String vmHasJFR() {
+        System.out.println("!!!has jfr value is " + WB.isJFRIncludedInVmBuild());
         return "" + WB.isJFRIncludedInVmBuild();
     }
 
