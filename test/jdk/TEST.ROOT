@@ -86,6 +86,7 @@ requires.properties= \
     vm.hasSA \
     vm.hasJFR \
     vm.jvmci \
+    vm.openj9 \
     docker.support \
     release.implementor \
     jdk.containerized
